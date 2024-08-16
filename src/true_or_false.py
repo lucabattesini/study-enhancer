@@ -1,13 +1,20 @@
+
+question = "Wrong or False"
+result = True
+
 def true_or_false(question, result) :
-    print(f"{question}")
-    answer = str("Write 'T' for true or 'F' for false")
-    if answer == "f" or "F" :
+    print(question)
+    answer = str(input("Write t for true or f for false "))
+    print("=====" * 25)
+    if answer == "f" :
         if result == False:
             print("Congratulations, right answer")
-        else:
+        if result == True:
             print("Wrong answer")
-    elif answer == "t" or "T" :
+    elif answer == "t" :
         if result == True:
             print("Congratulations, right answer")
-        else:
+        if result == False:
             print("Wrong answer")
+
+true_or_false(question, result)
