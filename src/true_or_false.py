@@ -1,5 +1,5 @@
 
-question = "Wrong or False"
+question = "Wrong or false"
 result = True
 
 def true_or_false(question, result) :
