@@ -1,4 +1,4 @@
-from db.questions import new_question
+from db.questions import new_question, get_questions
 
 def menu():
     print(f"MENU: ")
@@ -14,13 +14,27 @@ def insert_question() :
     answer = str(input("True/False? > "))
     new_question(question, answer)
 
+def print_questions() :
+    questions = get_questions()
+    for q in questions:
+        print(q['statement'])
+        answer = input("True or False? > ")
+        if answer == q['correct_answer']:
+            print("You're right!")
+        else:
+            print("You're wrong!")
+        print("===" * 10)
+
 def main(): 
     print(f"Welcome \n ")
-    answer = menu()
-    if answer == "1":
-        insert_question()
-    elif answer == "2":
-        print("Answer a question")
+    answer = "4"
+    while answer != "0":
+        answer = menu()
+        if answer == "1":
+            insert_question()
+        elif answer == "2":
+            print_questions()
+
 
 
 
