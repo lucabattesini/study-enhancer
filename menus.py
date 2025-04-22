@@ -1,4 +1,4 @@
-from admin import create_question
+from admin import create_question, show_questions
 from user import print_questions
 
 def show_main_menu():
@@ -21,7 +21,7 @@ def run_admin(sub_menu_answer):
         case "a":
             return create_question()
         case "b":
-            return print("B")
+            return show_questions()
         case "c":
             return print("C")
         case "d":

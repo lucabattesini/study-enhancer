@@ -1,4 +1,4 @@
-from db.questions import new_question
+from db.questions import new_question, get_questions
 
 def create_question() :
     print("Inserting a new question")
@@ -7,3 +7,16 @@ def create_question() :
     question = str(input("Write the question statement > "))
     answer = str(input("True/False? > "))
     new_question(question, answer)
+
+def show_questions() :
+    print("Questions list:")
+    print("===" * 6)
+    questions = get_questions()
+    for index, q in enumerate(questions):
+        print(f"{index+1}. {q['statement']}")
+        print(f"Answer: {q['correct_answer']}")
+        print(f"Subject: {q['subject']}")
+        print(f"Type: {q['type']}")
+        print(f"Topic: {q['topic']}")
+        print(f"Answer to Print: {q['answer_to_print']}")
+        print(f"---")
