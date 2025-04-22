@@ -5,14 +5,15 @@ def show_main_menu():
     print(f"MAIN MENU: ")
     print(f"1. Manage questions")
     print(f"2. Answer questions")
+    print(f"0. Exit")
     return input("> ")
 
 def show_admin_menu():
-    print(f"A. Create questions")
-    print(f"B. View questions")
-    print(f"C. Edit questions")
-    print(f"D. Delete questions")
-    print(f"0. Exit")
+    print(f"    A. Create questions")
+    print(f"    B. View questions")
+    print(f"    C. Edit questions")
+    print(f"    D. Delete questions")
+    print(f"    0. Back to main menu")
     return input("> ")
 
 def run_admin(sub_menu_answer):
