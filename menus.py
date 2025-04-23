@@ -1,21 +1,27 @@
 from admin import create_question, show_questions
 from user import print_questions
+from utils import clean_terminal
 
 # Just show the opitions of the main menu
 def show_main_menu():
-    print(f"MAIN MENU: ")
-    print(f"1. Manage questions")
-    print(f"2. Answer questions")
-    print(f"0. Exit")
+    clean_terminal()
+    print("========== MAIN MENU ===========")
+    print("1. Manage questions")
+    print("2. Answer questions")
+    print("0. Exit")
+    print("=" * 32)
     return input("> ")
 
 # just show the opitions of the manager menu
 def show_admin_menu():
-    print("    A. Create questions")
-    print("    B. View questions")
-    print("    C. Edit questions")
-    print("    D. Delete questions")
-    print("    0. Back to main menu")
+    clean_terminal()
+    print("========== MANAGER MENU ===========")
+    print("A. Create questions")
+    print("B. View questions")
+    print("C. Edit questions")
+    print("D. Delete questions")
+    print("0. Back to main menu")
+    print("=" * 35)
     return input("> ")
 
 # Run a specific function for each chosen menu opition
