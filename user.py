@@ -1,5 +1,6 @@
 from db.questions import get_questions
 
+# Show all the questions, ask for an answer and give a feedback if you're right or wrong
 def print_questions() :
     questions = get_questions()
     for q in questions:

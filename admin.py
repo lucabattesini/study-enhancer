@@ -1,5 +1,8 @@
 from db.questions import new_question, get_questions
 
+# The next functions will work as a CRUD
+
+# Create a new question in questions table
 def create_question() :
     print("Inserting a new question")
     print("===" * 6)
@@ -8,6 +11,7 @@ def create_question() :
     answer = str(input("True/False? > "))
     new_question(question, answer)
 
+# Will show all the db questions
 def show_questions() :
     print("Questions list:")
     print("===" * 6)

@@ -1,6 +1,7 @@
 from admin import create_question, show_questions
 from user import print_questions
 
+# Just show the opitions of the main menu
 def show_main_menu():
     print(f"MAIN MENU: ")
     print(f"1. Manage questions")
@@ -8,14 +9,16 @@ def show_main_menu():
     print(f"0. Exit")
     return input("> ")
 
+# just show the opitions of the manager menu
 def show_admin_menu():
-    print(f"    A. Create questions")
-    print(f"    B. View questions")
-    print(f"    C. Edit questions")
-    print(f"    D. Delete questions")
-    print(f"    0. Back to main menu")
+    print("    A. Create questions")
+    print("    B. View questions")
+    print("    C. Edit questions")
+    print("    D. Delete questions")
+    print("    0. Back to main menu")
     return input("> ")
 
+# Run a specific function for each chosen menu opition
 def run_admin(sub_menu_answer):
     match sub_menu_answer.lower():
         case "a":
@@ -26,9 +29,10 @@ def run_admin(sub_menu_answer):
             return print("C")
         case "d":
             return print("D")
-        case "0":
+        case "0": # Leave the manager menu and come back to the main menu
             return
 
+# Depending of your chosen opition, will run the function of the manager menu or the user menu
 def menu_controler(): 
     answer = "1000"
     while answer != "0":
