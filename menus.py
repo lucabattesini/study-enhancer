@@ -1,4 +1,4 @@
-from admin import create_question, show_questions
+from admin import create_question, show_questions, delete_question
 from user import print_questions
 from utils import clean_terminal
 
@@ -34,7 +34,7 @@ def run_admin(sub_menu_answer):
         case "c":
             return print("C")
         case "d":
-            return print("D")
+            return delete_question()
         case "0": # Leave the manager menu and come back to the main menu
             return
 

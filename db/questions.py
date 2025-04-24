@@ -7,6 +7,10 @@ def new_question(question, answer) :
     cursor.execute(f"INSERT INTO questions (id, statement, correct_answer) VALUES ('{id}', '{question}', '{answer}')")
     connection.commit()
 
+def exclude_question(id) :
+    cursor.execute(f"DELETE FROM questions WHERE id = '{id}'")
+    connection.commit()
+
 # Will organize the vars of the table in an object
 def parse_question(params) :
     return {
@@ -27,5 +31,4 @@ def get_questions() :
     for r in list_result:
         list_objects.append(parse_question(r))
     return list_objects
-    
     

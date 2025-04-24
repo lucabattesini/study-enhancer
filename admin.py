@@ -1,4 +1,4 @@
-from db.questions import new_question, get_questions
+from db.questions import new_question, get_questions, exclude_question
 
 # The next functions will work as a CRUD
 
@@ -11,8 +11,21 @@ def create_question() :
     answer = str(input("True/False? > "))
     new_question(question, answer)
 
+def delete_question() :
+    questions = show_questions(stop_view=False)
+    position = int(input(f"Select question number to delete >"))
+    if len(questions) > position > 0:
+        question_to_delete = questions[position-1]
+        exclude_question(question_to_delete['id'])
+    else:
+        print("===" * 10)
+        print("Undefined question number")
+        print("===" * 10)
+        delete_question()
+        
+
 # Will show all the db questions
-def show_questions() :
+def show_questions(stop_view=True) :
     print("Questions list:")
     print("===" * 6)
     questions = get_questions()
@@ -24,3 +37,7 @@ def show_questions() :
         print(f"Topic: {q['topic']}")
         print(f"Answer to Print: {q['answer_to_print']}")
         print(f"---")
+    if stop_view:
+        input("Press any key to exit >")
+    return questions
+    
