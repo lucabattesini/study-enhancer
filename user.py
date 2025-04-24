@@ -1,8 +1,11 @@
 from db.questions import get_questions
 from utils import clean_terminal
 
-# Show all the questions, ask for an answer and give a feedback if you're right or wrong
 def print_questions() :
+    '''
+    Show all the questions, ask for an answer
+    and give a feedback if you're right or wrong
+    '''
     questions = get_questions()
     correct = int(0)
     wrong = int(0)
