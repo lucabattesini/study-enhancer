@@ -16,6 +16,10 @@ def exclude_question(id) :
     cursor.execute(f"DELETE FROM questions WHERE id = '{id}'")
     connection.commit()
 
+def edit_question(id, object_to_change, change) :
+    cursor.execute(f"UPDATE questions SET {object_to_change} = '{change}' WHERE id = '{id}'")
+    connection.commit()
+
 def parse_question(params) :
     '''
     Will organize the vars of the table in an object

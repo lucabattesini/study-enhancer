@@ -9,8 +9,11 @@ def print_questions() :
     questions = get_questions()
     correct = int(0)
     wrong = int(0)
+    question_number = int(0)
     for q in questions:
         clean_terminal()
+        question_number = question_number + 1
+        print(f"QUESTION {question_number}")
         print(q['statement'])
         print("=" * 10)
         answer = input("True or False? > ")
@@ -21,4 +24,6 @@ def print_questions() :
     
     clean_terminal()
     print("=" * 10)
-    input(f"You did {correct} correct and {wrong} wrong")
+    hit_percentage = correct / question_number * 100
+    print(f"You did {correct} correct and {wrong} wrong")
+    input(f"It means you're {hit_percentage}% correct > ")

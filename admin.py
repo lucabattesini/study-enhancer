@@ -1,4 +1,5 @@
 from db.questions import new_question, get_questions, exclude_question
+from utils import clean_terminal, select_object_to_edit
 
 # The next functions will work as a CRUD
 
@@ -6,11 +7,12 @@ def create_question() :
     '''
     Create a new question in questions table
     '''
-    print("Inserting a new question")
-    print("===" * 6)
-    print("Fill out the following:")
+    print("INSERTING A NEW QUESTION")
+    print("===" * 10)
+    print("Fill out the following")
+    print("===" * 10)
     question = str(input("Write the question statement > "))
-    answer = str(input("True/False? > "))
+    answer = str(input("Answer: True or False? > "))
     new_question(question, answer)
 
 def delete_question() :
@@ -20,7 +22,7 @@ def delete_question() :
     '''
     questions = show_questions(stop_view=False)
     position = int(input(f"Select question number to delete >"))
-    if len(questions) > position > 0:
+    if len(questions) >= position > 0:
         question_to_delete = questions[position-1]
         exclude_question(question_to_delete['id'])
     else:
@@ -28,13 +30,26 @@ def delete_question() :
         print("Undefined question number")
         print("===" * 10)
         delete_question()
+
+def select_question_to_edit() :
+    questions = show_questions(stop_view=False)
+    position = int(input(f"Select question number to edit > "))
+    if len(questions) >= position > 0:
+        question_to_edit = questions[position-1]
+        select_object_to_edit(question_to_edit['id'])
+    else:
+        print("===" * 10)
+        print("Undefined question number")
+        print("===" * 10)
+        select_question_to_edit()
         
 def show_questions(stop_view=True) :
     '''
     Will show all the db questions
     '''
-    print("Questions list:")
-    print("===" * 6)
+    clean_terminal()
+    print("QUESTION LIST")
+    print("===" * 10)
     questions = get_questions()
     for index, q in enumerate(questions):
         print(f"{index+1}. {q['statement']}")
@@ -43,8 +58,9 @@ def show_questions(stop_view=True) :
         print(f"Type: {q['type']}")
         print(f"Topic: {q['topic']}")
         print(f"Answer to Print: {q['answer_to_print']}")
-        print(f"---")
+        print("===" * 10)
+        print("===" * 10)
     if stop_view:
-        input("Press any key to exit >")
+        input("Press any key to go to main menu > ") 
     return questions
     
