@@ -19,7 +19,7 @@ def show_admin_menu():
     Just show the opitions of the manager menu
     '''
     clean_terminal()
-    print("========== MANAGER MENU ===========")
+    print("==== MANAGER MENU ====")
     print("A. Create questions")
     print("B. View questions")
     print("C. Edit questions")
@@ -27,6 +27,16 @@ def show_admin_menu():
     print("0. Back to main menu")
     print("=" * 35)
     return input("> ")
+
+def show_user_menu() :
+    print("===== USER MENU =====")
+    print("What type of question you want to answer?")
+    print("A. True or False \nB. Multiple choices")
+    question_type = input("> ")
+    if question_type == "a":
+        print_questions("true_or_false")
+    elif question_type == "b":
+        print_questions("multiple_answer")
 
 def run_admin(sub_menu_answer):
     '''
@@ -56,4 +66,4 @@ def menu_controler():
             sub_menu_answer = show_admin_menu()
             run_admin(sub_menu_answer)
         elif answer == "2":
-            print_questions()
+            show_user_menu()

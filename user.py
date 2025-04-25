@@ -1,7 +1,7 @@
 from db.questions import get_questions
 from utils import clean_terminal
 
-def print_questions() :
+def print_questions(question_type) :
     '''
     Show all the questions, ask for an answer
     and give a feedback if you're right or wrong
@@ -13,14 +13,15 @@ def print_questions() :
     for q in questions:
         clean_terminal()
         question_number = question_number + 1
-        print(f"QUESTION {question_number}")
-        print(q['statement'])
-        print("=" * 10)
-        answer = input("True or False? > ")
-        if answer == q['correct_answer']:
-            correct = correct + 1
-        else:
-            wrong = wrong + 1
+        if question_type == q['type']:
+            print(f"QUESTION {question_number}")
+            print(q['statement'])
+            print("=" * 10)
+            answer = input("True or False? > ")
+            if answer == q['correct_answer']:
+                correct = correct + 1
+            else:
+                wrong = wrong + 1
     
     clean_terminal()
     print("=" * 10)
