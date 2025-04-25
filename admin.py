@@ -11,9 +11,11 @@ def create_question() :
     print("===" * 10)
     print("Fill out the following")
     print("===" * 10)
+    question_type = str(input("Question type (true_false or multiple_choices) > "))
     question = str(input("Write the question statement > "))
-    answer = str(input("Answer: True or False? > "))
-    new_question(question, answer)
+    answer_to_print = str(input("Answer to show to the user > "))
+    answer = str(input("Correct answer > "))
+    new_question(question, answer, answer_to_print, question_type)
 
 def delete_question() :
     '''
