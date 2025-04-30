@@ -36,7 +36,7 @@ def show_user_menu() :
     if question_type == "a":
         print_questions("true_or_false")
     elif question_type == "b":
-        print_questions("multiple_answer")
+        print_questions("multiple_choices")
 
 def run_admin(sub_menu_answer):
     '''

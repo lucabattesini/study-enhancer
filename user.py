@@ -12,12 +12,12 @@ def print_questions(question_type) :
     question_number = int(0)
     for q in questions:
         clean_terminal()
-        question_number = question_number + 1
         if question_type == q['type']:
+            question_number = question_number + 1
             print(f"QUESTION {question_number}")
             print(q['statement'])
             print("=" * 10)
-            answer = input("True or False? > ")
+            answer = input(q['answer_to_print'])
             if answer == q['correct_answer']:
                 correct = correct + 1
             else:
