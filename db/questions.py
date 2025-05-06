@@ -1,12 +1,12 @@
 from db.connection import cursor, connection
 from uuid import uuid1
 
-def new_question(question, answer, answer_to_print, question_type) :
+def new_question(question, answer, answer_to_print, question_type, question_subject, question_topic) :
     '''
     Will insert a new id, question and answer to the questions table
     '''
     id = uuid1()
-    cursor.execute(f"INSERT INTO questions (id, type, statement, answers_to_print, correct_answer) VALUES ('{id}', '{question_type}', '{question}', '{answer_to_print}', '{answer}')")
+    cursor.execute(f"INSERT INTO questions (id, type, statement, answers_to_print, correct_answer, subject, topic) VALUES ('{id}', '{question_type}', '{question}', '{answer_to_print}', '{answer}', '{question_subject}', '{question_topic}')")
     connection.commit()
 
 def exclude_question(id) :
