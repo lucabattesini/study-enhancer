@@ -10,18 +10,24 @@ def print_questions(question_type) :
     correct = int(0)
     wrong = int(0)
     question_number = int(0)
+    question_subject = str(input("What's the subject you want to answer?"))
+    question_topic = str(input("What's the question topic you want to answer?"))
     for q in questions:
         clean_terminal()
         if question_type == q['type']:
-            question_number = question_number + 1
-            print(f"QUESTION {question_number}")
-            print(q['statement'])
-            print("=" * 10)
-            answer = input(q['answer_to_print'])
-            if answer == q['correct_answer']:
-                correct = correct + 1
-            else:
-                wrong = wrong + 1
+            if question_subject == q['subject']:
+                if question_topic == q['topic']:
+                    question_number = question_number + 1
+                    print(f"QUESTION {question_number}")
+                    print(q['statement'])
+                    print("=" * 10)
+                    answer = input(q['answer_to_print'])
+                    if answer == q['correct_answer']:
+                        correct = correct + 1
+                    else:
+                        wrong = wrong + 1
+                else:
+                    print("We don't have this question topic in our data base, please try again later")
     
     clean_terminal()
     print("=" * 10)
