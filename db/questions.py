@@ -45,3 +45,12 @@ def get_questions() :
         list_objects.append(parse_question(r))
     return list_objects
     
+def get_question_selected_by_id(question_id) :
+    '''
+    Will get the questions from the db, an will organize with parse_question()
+    ''' 
+    list = get_questions()
+    for r in list:
+        if question_id == r["id"]:
+            return r
+    
