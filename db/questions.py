@@ -50,7 +50,12 @@ def get_question_selected_by_id(question_id) :
     Will get the questions from the db, an will organize with parse_question()
     ''' 
     list = get_questions()
+    selected_question = []
     for r in list:
         if question_id == r["id"]:
-            return r
+            selected_question.append(r)
+    if selected_question:
+        return selected_question
+    else:
+        return {"No itens found"}
     
