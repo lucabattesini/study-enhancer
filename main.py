@@ -11,5 +11,3 @@ async def questions_list():
 @app.get("/questions/{question_id}")
 async def get_question_by_id(question_id):
     return get_question_selected_by_id(question_id)
-
-# to do
