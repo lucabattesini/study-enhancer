@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from db.questions import get_questions, get_question_selected_by_id, exclude_question
+from db.questions import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question
 
 app = FastAPI()
 
@@ -15,3 +15,13 @@ async def get_question_by_id(question_id):
 async def delete_question_by_id(question_id):
     exclude_question(question_id)
     return {"question deleted"}
+
+@app.get("/questions/edit/{object_to_change}/{change}/{question_id}")
+async def edit_question_by_id(object_to_change, change, question_id):
+    edit_question(question_id, object_to_change, change)
+    return {"question edited"}
+
+@app.get("questions/create/{question}/{answer}/{answer_to_print}/{question_type}/{question_subject}/{question_topic}")
+async def create_question(question, answer, answer_to_print, question_type, question_subject, question_topic):
+    new_question(question, answer, answer_to_print, question_type, question_subject, question_topic)
+    return {"question created"}
