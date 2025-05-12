@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
-class question_schema(BaseModel):
-    id: str
+class Question(BaseModel):
     type: str
     subject: str
     topic: str
