@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from schemas import Question
 from db.questions import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question
 
 app = FastAPI()
@@ -36,10 +37,8 @@ async def edit_question_by_id(object_to_change, change, question_id):
     edit_question(question_id, object_to_change, change)
     return {"question edited"}
 
-@app.post("questions/{question}/{answer}/{answer_to_print}/{question_type}/{question_subject}/{question_topic}")
-async def create_question(question, answer, answer_to_print, question_type, question_subject, question_topic):
-    """POST
-    usar body ao invés de params
-    """
-    new_question(question, answer, answer_to_print, question_type, question_subject, question_topic)
+@app.post("/questions")
+async def create_question(question: Question):
+    new_question(question.type, question.subject, question.topic, question.statement, 
+                question.answer_to_print, question.correct_answer)
     return {"question created"}
