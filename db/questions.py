@@ -1,7 +1,7 @@
 from db.connection import cursor, connection
 from uuid import uuid1
 
-def new_question(question, answer, answer_to_print, question_type, question_subject, question_topic) :
+def new_question(question_type, question_subject, question_topic, question, answer_to_print, answer) :
     '''
     Will insert a new id, question and answer to the questions table
     '''
