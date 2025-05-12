@@ -1,16 +1,7 @@
 from fastapi import FastAPI
 from db.questions import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question
-from pydantic import BaseModel
 
 app = FastAPI()
-
-class Question(BaseModel):
-    question: str
-    answer: str
-    answer_to_print: str
-    question_type: str
-    question_subject: str
-    question_topic: str
 
 @app.get("/questions")
 async def questions_list():
