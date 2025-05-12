@@ -1,14 +1,23 @@
 from fastapi import FastAPI
 from db.questions import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question
+from pydantic import BaseModel
 
 app = FastAPI()
+
+class Question(BaseModel):
+    question: str
+    answer: str
+    answer_to_print: str
+    question_type: str
+    question_subject: str
+    question_topic: str
 
 @app.get("/questions")
 async def questions_list():
     """Return all questions"""
     return get_questions() 
 
-@app.get("/questions/get/{question_id}")
+@app.get("/questions/{question_id}")
 async def get_question_by_id(question_id):
     """
     Return 1 question
@@ -16,7 +25,7 @@ async def get_question_by_id(question_id):
     """
     return get_question_selected_by_id(question_id)
 
-@app.delete("/questions/delete/{question_id}")
+@app.delete("/questions/{question_id}")
 async def delete_question_by_id(question_id):
     """
     Delete 1 question
@@ -25,7 +34,7 @@ async def delete_question_by_id(question_id):
     exclude_question(question_id)
     return {"question deleted"}
 
-@app.put("/questions/edit/{object_to_change}/{change}/{question_id}")
+@app.put("/questions/{object_to_change}/{change}/{question_id}")
 async def edit_question_by_id(object_to_change, change, question_id):
     """PUT
     @app.put("/questions/{question_id}")
@@ -36,7 +45,7 @@ async def edit_question_by_id(object_to_change, change, question_id):
     edit_question(question_id, object_to_change, change)
     return {"question edited"}
 
-@app.post("questions/create/{question}/{answer}/{answer_to_print}/{question_type}/{question_subject}/{question_topic}")
+@app.post("questions/{question}/{answer}/{answer_to_print}/{question_type}/{question_subject}/{question_topic}")
 async def create_question(question, answer, answer_to_print, question_type, question_subject, question_topic):
     """POST
     usar body ao invés de params
