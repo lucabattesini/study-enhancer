@@ -1,5 +1,6 @@
 from db.connection import cursor, connection
 from uuid import uuid1
+from schema.questions_schema import Question
 
 def new_question(question_type, question_subject, question_topic, question, answer_to_print, answer) :
     '''
@@ -20,19 +21,19 @@ def edit_question(id, object_to_change, change) :
     cursor.execute(f"UPDATE questions SET {object_to_change} = '{change}' WHERE id = '{id}'")
     connection.commit()
 
-def parse_question(params) :
+def parse_question(params) -> Question:
     '''
     Will organize the vars of the table in an object
     '''
-    return {
-        'id': params[0],
-        'type': params[1],
-        'subject': params[2],
-        'topic': params[3],
-        'statement': params[4],
-        'answer_to_print': params[5],
-        'correct_answer': params[6]
-    }
+    return Question(
+        id=params[0],
+        type=params[1],
+        subject=params[2],
+        topic=params[3],
+        statement=params[4],
+        answer_to_print=params[5],
+        correct_answer=params[6]
+    )
 
 def get_questions() :
     '''
