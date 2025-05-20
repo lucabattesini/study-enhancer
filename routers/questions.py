@@ -9,7 +9,13 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-@router.get("/") # Implement pagination, status code/standart response, users route to admin users, validation, 
+# Implement pagination, status code/standart response, users route to admin users, validation, 
+
+@router.get("/", 
+        responses={
+        200: {"description": "OK"},
+        500: {"description": "Internal server error"}
+        })
 async def questions_list():
     result = get_questions()
     print(result)
