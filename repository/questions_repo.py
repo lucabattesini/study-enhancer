@@ -2,7 +2,7 @@ from db.connection import cursor, connection
 from uuid import uuid1
 from schema.questions_schema import Question
 
-def new_question(question_type, question_subject, question_topic, question, answer_to_print, answer) :
+def new_question(question_type, question_subject, question_topic, question, answer_to_print, answer):
     '''
     Will insert a new id, question and answer to the questions table
     '''
@@ -10,14 +10,14 @@ def new_question(question_type, question_subject, question_topic, question, answ
     cursor.execute(f"INSERT INTO questions (id, type, statement, answers_to_print, correct_answer, subject, topic) VALUES ('{id}', '{question_type}', '{question}', '{answer_to_print}', '{answer}', '{question_subject}', '{question_topic}')")
     connection.commit()
 
-def exclude_question(id) :
+def exclude_question(id):
     '''
     Delete a question in the db
     '''
     cursor.execute(f"DELETE FROM questions WHERE id = '{id}'")
     connection.commit()
 
-def edit_question(id, object_to_change, change) :
+def edit_question(id, object_to_change, change):
     cursor.execute(f"UPDATE questions SET {object_to_change} = '{change}' WHERE id = '{id}'")
     connection.commit()
 
@@ -35,7 +35,7 @@ def parse_question(params) -> Question:
         correct_answer=params[6]
     )
 
-def get_questions() :
+def get_questions():
     '''
     Will get the questions from the db, an will organize with parse_question()
     ''' 
@@ -46,7 +46,7 @@ def get_questions() :
         list_objects.append(parse_question(r))
     return list_objects
     
-def get_question_selected_by_id(question_id) :
+def get_question_selected_by_id(question_id):
     '''
     Will get the questions from the db, an will organize with parse_question()
     ''' 
@@ -60,3 +60,16 @@ def get_question_selected_by_id(question_id) :
     else:
         return {"No itens found"}
     
+def get_question_filtered(question_column, column_info):
+    '''
+    Will get question filtered by an specific information in an specific column
+    '''
+    list = get_questions()
+    selected_questions = []
+    for r in list:
+        if column_info == r[f"{question_column}"]:
+            selected_questions.append(r)
+    if selected_questions:
+        return selected_questions
+    else:
+        return {"No itens found"}

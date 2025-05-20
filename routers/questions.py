@@ -11,7 +11,7 @@ router = APIRouter(
 
 @router.get("/") # Implement filters, implement pagination, status code/standart response,users route to admin users, validation, 
 async def questions_list():
-    result = get_questions() 
+    result = get_questions()
     print(result)
     for r in result:
         r.check_type()
