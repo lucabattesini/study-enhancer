@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from schema.questions_schema import Question
-from repository.questions_repo import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question
+from repository.questions_repo import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question, get_question_filtered
 
 
 router = APIRouter(
@@ -9,7 +9,7 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-@router.get("/") # Implement filters, implement pagination, status code/standart response,users route to admin users, validation, 
+@router.get("/") # Implement pagination, status code/standart response, users route to admin users, validation, 
 async def questions_list():
     result = get_questions()
     print(result)
@@ -20,6 +20,10 @@ async def questions_list():
 @router.get("/{question_id}")
 async def get_question_by_id(question_id):
     return get_question_selected_by_id(question_id)
+
+@router.get("/{question_column}/{column_info}")
+async def get_question_selected_by_column(question_column: str, column_info: str):
+    return get_question_filtered(question_column, column_info)
 
 @router.delete("/{question_id}")
 async def delete_question_by_id(question_id):

@@ -53,7 +53,7 @@ def get_question_selected_by_id(question_id):
     list = get_questions()
     selected_question = []
     for r in list:
-        if question_id == r["id"]:
+        if question_id == getattr(r, "id"):
             selected_question.append(r)
     if selected_question:
         return selected_question
@@ -67,7 +67,7 @@ def get_question_filtered(question_column, column_info):
     list = get_questions()
     selected_questions = []
     for r in list:
-        if column_info == r[f"{question_column}"]:
+        if column_info == getattr(r, question_column):
             selected_questions.append(r)
     if selected_questions:
         return selected_questions
