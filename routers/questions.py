@@ -1,4 +1,5 @@
 from fastapi import APIRouter, status
+from fastapi.responses import JSONResponse
 from schema.questions_schema import Question
 from repository.questions_repo import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question, get_question_filtered
 
@@ -11,13 +12,13 @@ router = APIRouter(
 
 # Implement pagination, status code/standart response, users route to admin users, validation
 
-@router.get("/", status_code=status.HTTP_200_OK)
+@router.get("/")
 async def questions_list():
     result = get_questions()
     print(result)
     for r in result:
         r.check_type()
-    return result
+    return JSONResponse(result, status_code=status.HTTP_200_OK)
 
 @router.get("/{question_id}")
 async def get_question_by_id(question_id):
