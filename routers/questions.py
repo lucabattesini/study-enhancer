@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from schema.questions_schema import Question
 from repository.questions_repo import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question, get_question_filtered
 
@@ -9,13 +9,9 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-# Implement pagination, status code/standart response, users route to admin users, validation, 
+# Implement pagination, status code/standart response, users route to admin users, validation
 
-@router.get("/", 
-        responses={
-        200: {"description": "OK"},
-        500: {"description": "Internal server error"}
-        })
+@router.get("/", status_code=status.HTTP_200_OK)
 async def questions_list():
     result = get_questions()
     print(result)
@@ -45,4 +41,4 @@ async def edit_question_by_id(question: Question):
 async def create_question(question: Question):
     new_question(question.type, question.subject, question.topic, question.statement, 
                 question.answer_to_print, question.correct_answer)
-    return {"question created"}
+    return {"Message": "Success"}
