@@ -10,7 +10,7 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-# Implement pagination, status code/standart response, users route to admin users, validation
+# Implement pagination, users route to admin users, validation
 
 @router.get("/")
 async def questions_list():
@@ -46,15 +46,15 @@ async def get_question_selected_by_column(question_column: str, column_info: str
 @router.delete("/{question_id}")
 async def delete_question_by_id(question_id):
     exclude_question(question_id)
-    return {"question deleted"}
+    return JSONResponse(status_code=status.HTTP_200_OK)
 
 @router.put("/{question_id}")
 async def edit_question_by_id(question: Question):
     edit_question(question)
-    return {"question edited"}
+    return JSONResponse(status_code=status.HTTP_200_OK)
 
 @router.post("/")
 async def create_question(question: Question):
     new_question(question.type, question.subject, question.topic, question.statement, 
                 question.answer_to_print, question.correct_answer)
-    return {"Message": "Success"}
+    return JSONResponse(status_code=status.HTTP_200_OK)
