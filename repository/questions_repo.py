@@ -4,7 +4,7 @@ from schema.questions_schema import Question
 
 def new_question(question_type, question_subject, question_topic, question, answer_to_print, answer):
     '''
-    Will insert a new id, question and answer to the questions table
+    Will insert a new question to the question table
     '''
     id = uuid1()
     cursor.execute(f"INSERT INTO questions (id, type, statement, answers_to_print, correct_answer, subject, topic) VALUES ('{id}', '{question_type}', '{question}', '{answer_to_print}', '{answer}', '{question_subject}', '{question_topic}')")
@@ -18,6 +18,9 @@ def exclude_question(id):
     connection.commit()
 
 def edit_question(id, object_to_change, change):
+    """
+    Will edit an specific question base 
+    """
     cursor.execute(f"UPDATE questions SET {object_to_change} = '{change}' WHERE id = '{id}'")
     connection.commit()
 

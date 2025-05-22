@@ -4,7 +4,6 @@ from fastapi.encoders import jsonable_encoder
 from schema.questions_schema import Question
 from repository.questions_repo import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question, get_question_filtered
 
-
 router = APIRouter(
     prefix="/questions",
     tags=["questions"],
