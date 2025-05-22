@@ -28,11 +28,21 @@ async def questions_list():
 
 @router.get("/{question_id}")
 async def get_question_by_id(question_id):
-    return get_question_selected_by_id(question_id)
+    question = get_question_selected_by_id(question_id)
+    question = jsonable_encoder(question)
+    return JSONResponse(
+        content={"data": question},
+        status_code=status.HTTP_200_OK
+    )
 
 @router.get("/{question_column}/{column_info}")
 async def get_question_selected_by_column(question_column: str, column_info: str):
-    return get_question_filtered(question_column, column_info)
+    question_filtered = get_question_filtered(question_column, column_info)
+    question_filtered = jsonable_encoder(question_filtered)
+    return JSONResponse(
+        content={"data": question_filtered},
+        status_code=status.HTTP_200_OK
+    )
 
 @router.delete("/{question_id}")
 async def delete_question_by_id(question_id):
