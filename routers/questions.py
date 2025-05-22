@@ -1,5 +1,6 @@
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from schema.questions_schema import Question
 from repository.questions_repo import get_questions, get_question_selected_by_id, exclude_question, edit_question, new_question, get_question_filtered
 
@@ -14,11 +15,16 @@ router = APIRouter(
 
 @router.get("/")
 async def questions_list():
+    # Controller
     result = get_questions()
-    print(result)
     for r in result:
         r.check_type()
-    return JSONResponse(result, status_code=status.HTTP_200_OK)
+    # ---
+    result = jsonable_encoder(result)
+    return JSONResponse(
+        content={"data": result}, 
+        status_code=status.HTTP_200_OK
+    )
 
 @router.get("/{question_id}")
 async def get_question_by_id(question_id):
