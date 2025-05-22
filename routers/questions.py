@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from schema.questions_schema import Question
@@ -13,15 +13,20 @@ router = APIRouter(
 # Implement pagination, users route to admin users, validation
 
 @router.get("/")
-async def questions_list():
+async def questions_list(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
     # Controller
     result = get_questions()
-    for r in result:
+    paginated_result = result[skip: skip + limit]
+    for r in paginated_result:
         r.check_type()
     # ---
-    result = jsonable_encoder(result)
+    json_result = jsonable_encoder(paginated_result)
     return JSONResponse(
-        content={"data": result}, 
+        content={"data": json_result,
+                 "total": len(result),
+                 "skip": skip,
+                 "limit": limit
+        }, 
         status_code=status.HTTP_200_OK
     )
 
