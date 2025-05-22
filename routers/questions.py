@@ -10,7 +10,7 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-# Implement pagination, users route to admin users, validation
+# users route to admin users, validation
 
 @router.get("/")
 async def questions_list(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
