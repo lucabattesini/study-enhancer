@@ -11,6 +11,9 @@ router = APIRouter(
 
 @router.get("/")
 async def get_all_profiles(skip: int= Query(0, ge=0), limit: int = Query(10, ge=1)):
+    '''
+    Will return all the profiles
+    '''
     result = get_profiles()
     paginated_result = result[skip: skip + limit]
     json_result = jsonable_encoder(paginated_result)
