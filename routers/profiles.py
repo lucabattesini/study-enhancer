@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Query, status
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from repository.profiles_repo import get_profiles
+from repository.profiles_repo import get_profiles, new_profile
+from schema.profile_schema import Profile
 
 router = APIRouter(
     prefix="/profiles",
@@ -28,11 +29,12 @@ async def get_all_profiles(skip: int= Query(0, ge=0), limit: int = Query(10, ge=
     )
 
 @router.post("/{id}")
-async def create_profile():
+async def create_profile(profile: Profile):
     '''
     Create profile
     '''
-    return
+    new_profile(profile.name, profile.permission, profile.questions_answered, profile.correct_questions)
+    return JSONResponse(status_code=status.HTTP_200_OK)
 
 @router.put("/{id}")
 async def edit_profile():
