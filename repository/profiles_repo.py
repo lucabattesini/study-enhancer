@@ -12,6 +12,13 @@ def parse_profiles(params) -> Profile:
         questions_answered=params[2],
         correct_questions=params[3]
     )
+def new_profile(name, permission, questions_answered, correct_questions):
+    '''
+    Will create a new profile
+    '''
+    id = uuid1()
+    cursor.execute(f"INSERT INTO profiles (id, name, permission, questions_answered, correct_questions) VALUES ({id}, {name}, {permission}, {questions_answered}, {correct_questions})")
+    connection.commit()
 
 def get_profiles():
     '''
