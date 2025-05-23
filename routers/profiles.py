@@ -5,3 +5,7 @@ router = APIRouter(
     tags=["profile"],
     responses={404: {"description": "Not found"}}
 )
+
+@router.get("/")
+async def get_all_profiles():
+    return
