@@ -26,3 +26,24 @@ async def get_all_profiles(skip: int= Query(0, ge=0), limit: int = Query(10, ge=
         },
         status_code=status.HTTP_200_OK
     )
+
+@router.post("/{id}")
+async def create_profile():
+    '''
+    Create profile
+    '''
+    return
+
+@router.put("/{id}")
+async def edit_profile():
+    '''
+    Edit a profile
+    '''
+    return
+
+@router.delete("/{id}")
+async def delete_profile():
+    '''
+    Delete a profile
+    '''
+    return
