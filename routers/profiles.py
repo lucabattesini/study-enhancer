@@ -28,7 +28,7 @@ async def get_all_profiles(skip: int= Query(0, ge=0), limit: int = Query(10, ge=
         status_code=status.HTTP_200_OK
     )
 
-@router.post("/{id}")
+@router.post("/")
 async def create_profile(profile: Profile):
     '''
     Create profile
