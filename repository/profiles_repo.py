@@ -30,3 +30,10 @@ def get_profiles():
     for r in list_result:
         list_objects.append(parse_profiles(r))
     return list_objects
+
+def exclude_question(id):
+    '''
+    Delete a profile
+    '''
+    cursor.execute(f"DELETE FROM profiles WHERE id = '{id}'")
+    connection.commit()
