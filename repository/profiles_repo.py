@@ -31,9 +31,16 @@ def get_profiles():
         list_objects.append(parse_profiles(r))
     return list_objects
 
-def exclude_question(id):
+def exclude_profile(id):
     '''
     Delete a profile
     '''
     cursor.execute(f"DELETE FROM profiles WHERE id = '{id}'")
+    connection.commit()
+
+def edit_profile(id, object_to_change, change):
+    """
+    Edit an specific profile
+    """
+    cursor.execute(f"UPDATE profiles SET {object_to_change} = '{change}' WHERE id = '{id}'")
     connection.commit()
