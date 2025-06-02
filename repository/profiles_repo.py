@@ -16,8 +16,9 @@ def new_profile(name, permission, questions_answered, correct_questions):
     '''
     Will create a new profile
     '''
-    id = uuid1()
-    cursor.execute(f"INSERT INTO profiles (id, name, permission, questions_answered, correct_questions) VALUES ({id}, {name}, {permission}, {questions_answered}, {correct_questions})")
+    id = str(uuid1())
+    cursor.execute("INSERT INTO profiles (id, name, permission, questions_answered, correct_questions) VALUES (?, ?, ?, ?, ?)",
+                   (id, name, permission, questions_answered, correct_questions))
     connection.commit()
 
 def get_profiles():
