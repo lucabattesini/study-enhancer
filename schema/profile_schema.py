@@ -5,3 +5,7 @@ class Profile(BaseModel):
     permission: str
     questions_answered: int | None
     correct_questions: int | None
+
+class Answers(BaseModel):
+    questions_answered: int
+    correct_questions: int
