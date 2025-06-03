@@ -12,7 +12,7 @@ def parse_profiles(params) -> Profile:
         questions_answered=params[2],
         correct_questions=params[3]
     )
-def new_profile(name, permission, questions_answered, correct_questions):
+def create_profile(name, permission, questions_answered, correct_questions):
     '''
     Will create a new profile
     '''
