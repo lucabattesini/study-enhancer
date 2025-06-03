@@ -2,7 +2,7 @@ from fastapi import APIRouter, Query, status
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from repository.profiles_repo import get_profiles, create_profile, exclude_profile, edit_profile
-from schema.profile_schema import Profile, Answers
+from schema.profile_schema import Profile
 
 router = APIRouter(
     prefix="/profiles",
@@ -43,10 +43,6 @@ async def edit_profile(id, select_to_change, change):
     '''
     edit_profile(id, select_to_change, change)
     return JSONResponse(status_code=status.HTTP_200_OK)
-
-@router.patch("/")
-async def update_profile(answers: Answers):
-    return
 
 @router.delete("/{profile_id}")
 async def delete_profile(profile_id):
