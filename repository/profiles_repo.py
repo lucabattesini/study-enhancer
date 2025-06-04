@@ -7,10 +7,11 @@ def parse_profiles(params) -> Profile:
     Will organize the vars of the table in an object
     '''
     return Profile(
-        name=params[0],
-        permission=params[1],
-        questions_answered=params[2],
-        correct_questions=params[3]
+        id=params[0],
+        name=params[1],
+        permission=params[2],
+        questions_answered=params[3],
+        correct_questions=params[4]
     )
 def create_profile(name, permission, questions_answered, correct_questions):
     '''
