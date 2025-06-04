@@ -29,12 +29,15 @@ async def get_all_profiles(skip: int= Query(0, ge=0), limit: int = Query(10, ge=
     )
 
 @router.post("/")
-async def create_profile(profile: Profile):
+async def new_profile(profile: Profile):
     '''
     Create profile
     '''
     create_profile(profile.name, profile.permission, profile.questions_answered, profile.correct_questions)
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"message": "Profile created successfully"}
+    )
 
 @router.put("/")
 async def edit_profile(id, select_to_change, change):
