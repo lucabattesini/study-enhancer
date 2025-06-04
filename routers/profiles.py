@@ -29,7 +29,7 @@ async def get_all_profiles(skip: int= Query(0, ge=0), limit: int = Query(10, ge=
     )
 
 @router.post("/")
-async def new_profile(profile: Profile):
+async def new_db_profile(profile: Profile):
     '''
     Create profile
     '''
@@ -40,7 +40,7 @@ async def new_profile(profile: Profile):
     )
 
 @router.put("/")
-async def edit_profile(id, select_to_change, change):
+async def edit_db_profile(id, select_to_change, change):
     '''
     Edit a profile
     '''
@@ -48,7 +48,7 @@ async def edit_profile(id, select_to_change, change):
     return JSONResponse(status_code=status.HTTP_200_OK)
 
 @router.delete("/{profile_id}")
-async def delete_profile(profile_id):
+async def delete_db_profile(profile_id):
     '''
     Delete a profile
     '''
