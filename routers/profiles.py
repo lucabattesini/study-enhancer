@@ -53,4 +53,6 @@ async def delete_db_profile(profile_id):
     Delete a profile
     '''
     exclude_profile(profile_id)
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    return JSONResponse(status_code=status.HTTP_200_OK,
+                        content={"message": "Profile deleted successfully"}
+                        )
