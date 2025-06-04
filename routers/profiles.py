@@ -40,12 +40,14 @@ async def new_db_profile(profile: Profile):
     )
 
 @router.put("/")
-async def edit_db_profile(id, select_to_change, change):
+async def edit_db_profile(profile: Profile):
     '''
     Edit a profile
     '''
-    edit_profile(id, select_to_change, change)
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    edit_profile(profile.id, profile.name, profile.permission, profile.questions_answered, profile.correct_questions)
+    return JSONResponse(status_code=status.HTTP_200_OK,
+                        content={"message": "Profile edited successfully"}
+                        )
 
 @router.delete("/{profile_id}")
 async def delete_db_profile(profile_id):

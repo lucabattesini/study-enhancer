@@ -40,9 +40,9 @@ def exclude_profile(id):
     cursor.execute(f"DELETE FROM profiles WHERE id = '{id}'")
     connection.commit()
 
-def edit_profile(id, object_to_change, change):
+def edit_profile(id, name, permission, questions_answered, correct_questions):
     """
     Edit an specific profile
     """
-    cursor.execute(f"UPDATE profiles SET {object_to_change} = '{change}' WHERE id = '{id}'")
+    cursor.execute(f"UPDATE profiles SET name = '{name}', permission = '{permission}', questions_answered = '{questions_answered}', correct_questions = '{correct_questions}' WHERE id = '{id}'")
     connection.commit()
