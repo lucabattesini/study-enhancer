@@ -40,7 +40,7 @@ async def get_question_by_id(question_id):
     )
 
 @router.get("/{question_column}/{column_info}")
-async def get_question_selected_by_column(question_column: str, column_info: str):
+async def get_question_selected_by_category(question_column: str, column_info: str):
     question_filtered = get_question_filtered(question_column, column_info)
     question_filtered = jsonable_encoder(question_filtered)
     return JSONResponse(
