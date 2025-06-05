@@ -10,8 +10,6 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-# users route to admin users, validation
-
 @router.get("/")
 async def questions_list(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
     # Controller
@@ -39,15 +37,6 @@ async def get_question_by_id(question_id):
         status_code=status.HTTP_200_OK
     )
 
-@router.get("/{question_column}/{column_info}")
-async def get_question_selected_by_category(question_column: str, column_info: str):
-    question_filtered = get_question_filtered(question_column, column_info)
-    question_filtered = jsonable_encoder(question_filtered)
-    return JSONResponse(
-        content={"data": question_filtered},
-        status_code=status.HTTP_200_OK
-    )
-
 @router.delete("/{question_id}")
 async def delete_question_by_id(question_id):
     exclude_question(question_id)
@@ -64,4 +53,5 @@ async def edit_question_by_id(question: Question):
 async def create_question(question: Question):
     new_question(question.type, question.subject, question.topic, question.statement, 
                 question.answer_to_print, question.correct_answer)
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    return JSONResponse(status_code=status.HTTP_200_OK,
+                        content={"message": "Question created succesfully"})
