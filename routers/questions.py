@@ -53,10 +53,12 @@ async def delete_question_by_id(question_id):
     exclude_question(question_id)
     return JSONResponse(status_code=status.HTTP_200_OK)
 
-@router.put("/{question_id}")
+@router.put("/")
 async def edit_question_by_id(question: Question):
-    edit_question(question)
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    edit_question(question.id, question.type, question.subject, question.topic, question.statement, question.answers_to_print, question.correct_answer)
+    return JSONResponse(status_code=status.HTTP_200_OK,
+                        content={"message": "Question edited successfully"}
+                        )
 
 @router.post("/")
 async def create_question(question: Question):

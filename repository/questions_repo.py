@@ -17,11 +17,11 @@ def exclude_question(id):
     cursor.execute(f"DELETE FROM questions WHERE id = '{id}'")
     connection.commit()
 
-def edit_question(id, object_to_change, change):
+def edit_question(id, type, subject, topic, statement, answers_to_print, correct_answer):
     """
     Will edit an specific question base 
     """
-    cursor.execute(f"UPDATE questions SET {object_to_change} = '{change}' WHERE id = '{id}'")
+    cursor.execute(f"UPDATE questions SET type = '{type}', subject = '{subject}', topic = '{topic}', statement = '{statement}', answers_to_print = '{answers_to_print}', correct_answer = '{correct_answer}' WHERE id = '{id}'")
     connection.commit()
 
 def parse_question(params) -> Question:
