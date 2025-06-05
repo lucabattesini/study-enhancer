@@ -23,5 +23,13 @@ Now you've already intalled all the requirements, you just need to run this code
 
     uvicorn app:app --reload   
 
-## Contributing
-## License
+## Documentation
+As the project was made with FastAPI, all the documentation can be accessed by following the following steps
+
+- Run the project
+- Open the HTTP adress in your browser (It'll appear in your terminal)
+- Add to addres a "/docs"
+
+It'll look like this
+
+    http://127.0.0.1:8000/docs
