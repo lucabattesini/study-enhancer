@@ -12,12 +12,10 @@ router = APIRouter(
 
 @router.get("/")
 async def questions_list(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
-    # Controller
     result = get_questions()
     paginated_result = result[skip: skip + limit]
     for r in paginated_result:
         r.check_type()
-    # ---
     json_result = jsonable_encoder(paginated_result)
     return JSONResponse(
         content={"data": json_result,

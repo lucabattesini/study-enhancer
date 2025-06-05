@@ -13,6 +13,7 @@ def parse_profiles(params) -> Profile:
         questions_answered=params[3],
         correct_questions=params[4]
     )
+
 def create_profile(name, permission, questions_answered, correct_questions):
     '''
     Will create a new profile
