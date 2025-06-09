@@ -9,4 +9,4 @@ app.include_router(profiles.router)
 
 @app.get("/")
 async def root():
-    return{"message": "Hello World!"}
+    return{"message": "Main route"}
