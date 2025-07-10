@@ -1,6 +1,7 @@
 # Study enhancer API
 
 ## Description
+This project is an API built with FastAPI to manage a database of questions. It allows you to create, update, delete, and retrieve questions through RESTful endpoints — making it ideal for educational platforms, quizzes, or any system that needs dynamic question management.
 
 ## Technologies used
 - Python
@@ -8,6 +9,20 @@
 - SQLite
 
 ## Features
+✏️ Create and Edit Questions
+- Easily add new questions or update existing ones via API requests
+
+🗑️ Delete Questions
+- Remove questions from the database
+
+📄 Retrieve Questions
+- Get individual questions or list all stored questions
+
+🔍 Search and Filtering
+- Search by keywords, categories, or difficulty levels
+
+🚀 FastAPI Integration
+- Includes automatic interactive API docs via Swagger UI (/docs)
 
 ## Installing
 To run this project, you'll need firstly to copy it. Open the terminal in the folder you want to install the project an then run this line of code to copy it from github
