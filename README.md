@@ -1,4 +1,4 @@
-# Study enhancer
+# Study enhancer API
 
 ## Description
 
@@ -28,7 +28,7 @@ As the project was made with FastAPI, all the documentation can be accessed by f
 
 - Run the project
 - Open the HTTP adress in your browser (It'll appear in your terminal)
-- Add to addres a "/docs"
+- Add to address a "/docs"
 
 It'll look like this
 
